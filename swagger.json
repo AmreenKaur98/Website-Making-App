@@ -1,0 +1,285 @@
+{
+    "swagger":"2.0",
+    "info": {
+        "version": "14.1.3",
+        "description": "...SWAGGER DESCRIPTION FOR WEBSITE APPLICATION..."
+    },
+    "host": "localhost:8000",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths":{
+        "/signUp":{
+            "post":{
+              "tags":["Users"],
+              "description":"singup of user..",
+              "parameters":[
+                {
+                  "name":"user",
+                  "in":"body",
+                  "description":"options of signup..",
+                  "schema":{"$ref":"#/definitions/signup"}
+                }
+              ],
+              "produce":["application/json"],
+              "responses":{
+                "200":{"description":"result"}
+              }
+            }
+          },
+          "/login":{
+            "post":{
+              "tags":["Users"],
+              "description":"login of user..",
+              "parameters":[
+                {
+                  "name":"user",
+                  "in":"body",
+                  "description":"options of login..",
+                  "schema":{"$ref":"#/definitions/login"}
+                }
+              ],
+              "produce":["application/json"],
+              "responses":{
+                "200":{"description":"result"}
+              }
+            }
+          },
+          "/getpreview":{
+            "get":{
+                "tags": ["Users"],
+                  "description": "api for all website.. ",
+                  "parameters": [
+                    {
+                      "name":"authorization",
+                      "in":"header",
+                      "required":"true"
+                    }
+                  ],
+                  "produces": [
+                    "application/json"
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "result"
+                    }
+                }
+            }
+          },
+          "/website":{
+            "post":{
+              "tags": ["Users"],
+                "description": "Make New website..",
+                "parameters": [
+                  {
+                    "name":"authorization",
+                    "in":"header",
+                    "required":"true"
+                  },
+                  {
+                      "name": "webiteType",
+                      "in": "formData",
+                        "type":"string",
+                        "required":"true"
+                  },
+                  {
+                    "name": "websiteName",
+                    "in": "formData",
+                      "type":"string",
+                      "required":"true"
+                },
+                {
+                    "name": "email",
+                    "in": "formData",
+                      "type":"string",
+                      "required":"true"
+                },
+                {
+                    "name": "domainName",
+                    "in": "formData",
+                      "type":"string",
+                      "required":"true"
+                },
+                {
+                    "name": "logo",
+                    "in": "formData",
+                    "type":"file",
+                    "required":"true"
+                  },
+                {
+                    "name": "phoneNo",
+                    "in": "formData",
+                      "type":"number",
+                      "required":"true"
+                },
+                {
+                    "name": "workingHour",
+                    "in": "formData",
+                      "type":"number",
+                      "required":"true"
+                },
+                {
+                    "name": "userID",
+                    "in": "formData",
+                      "type":"string",
+                      "required":"true"
+                }
+                ],
+                "produces": [
+                  "application/json"
+                ],
+                "responses": {
+                  "200": {
+                    "description": "result"
+                  }
+                }
+              }
+          },
+          "/editSite":{
+            "put":{
+                "tags":["Users"],
+                "description":"edit the site",
+                "parameters":[
+                    {
+                        "name":"authorization",
+                        "in":"header",
+                        "required":"true"
+                      },
+                      {
+                          "name": "email",
+                          "in": "formData",
+                          "type":"string",
+                          "required":"true"
+                      }
+                ],
+                "produce":["application/json"],
+                "responses":{
+                  "200":{"description":"result"}
+                }
+              }
+          },
+          "/adminlogin":{
+            "post":{
+              "tags":["Admin"],
+              "description":"login of user..",
+              "parameters":[
+                {
+                  "name":"user",
+                  "in":"body",
+                  "description":"options of login..",
+                  "schema":{"$ref":"#/definitions/login"}
+                }
+              ],
+              "produce":["application/json"],
+              "responses":{
+                "200":{"description":"result"}
+              }
+            }
+          },
+          "/allusers":{
+            "get":{
+                "tags": ["Admin"],
+                  "description": "api for all users.. ",
+                  "parameters": [
+                    {
+                      "name":"authorization",
+                      "in":"header",
+                      "required":"true"
+                    }
+                  ],
+                  "produces": [
+                    "application/json"
+                  ],
+                  "responses": {
+                    "200": {
+                      "description": "result"
+                    }
+                }
+            }
+          },
+          "/addpreview":{
+            "post":{
+              "tags": ["Admin"],
+                "description": "Add .",
+                "parameters": [
+                  {
+                    "name":"authorization",
+                    "in":"header",
+                    "required":"true"
+                  },
+                  {
+                      "name": "previewType",
+                      "in": "formData",
+                        "type":"string",
+                        "required":"true"
+                  },
+                  {
+                    "name": "previewName",
+                    "in": "formData",
+                      "type":"string",
+                      "required":"true"
+                },
+                {
+                    "name": "email",
+                    "in": "formData",
+                      "type":"string",
+                      "required":"true"
+                },
+                {
+                    "name": "domainName",
+                    "in": "formData",
+                      "type":"string",
+                      "required":"true"
+                },
+                {
+                    "name": "logo",
+                    "in": "formData",
+                    "type":"file",
+                    "required":"true"
+                  },
+                {
+                    "name": "phoneNo",
+                    "in": "formData",
+                      "type":"number",
+                      "required":"true"
+                },
+                {
+                    "name": "workingHour",
+                    "in": "formData",
+                      "type":"number",
+                      "required":"true"
+                }
+                ],
+                "produces": [
+                  "application/json"
+                ],
+                "responses": {
+                  "200": {
+                    "description": "result"
+                  }
+                }
+              }
+          }
+
+    },
+    "definitions":{
+        "signup":{
+            "required":["firstName","email","lastName","mobileNo","password"],
+            "properties":{
+                "firstName":{ "type":"string"},
+                "lastName":{"type":"string"},
+                "email":{ "type":"string"},
+                "password":{ "type":"string"},
+                "mobileNo":{ "type":"string"}
+            }
+          },
+          "login":{
+            "required":["email","password"],
+          "properties":{
+            "email":{ "type":"string"},
+            "password":{ "type":"string"}
+            }
+          }
+    }
+}
