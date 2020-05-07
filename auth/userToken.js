@@ -13,7 +13,7 @@ function verify(req, res, next){
             if(data.author=='USER')
             {
                 req.query.userID=data._id
-                //req.body.userID=data._id
+                req.body.userID=data._id
                 //console.log('req--- ',req.query.userID);
                 next()
             }

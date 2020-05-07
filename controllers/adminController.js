@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs')
 var admin = require('../models/admin');
 var jwt = require('../auth/adminToken');
+var pre = require('../models/preview');
+const user = require('../models/user')
 
 function Login(body,res){
     var e = body.email;
@@ -56,6 +58,55 @@ function Signup(res){
     })
 }
 
+// THIS IS FOR CREATING PREVIEW //
+function preview(body,res){
+    // var path=body.file.path
+     console.log('p--------',body)
+    var obj={
+        previewType:body.previewType,
+        previewName:body.previewName,
+        email:body.email,
+        logo:body.file.path,
+        adminID:body.adminID,
+        domainName:body.domainName,
+        phoneNo:body.phoneNo,
+        workingHour:body.workingHour
+    }
+    var object=new pre(obj);
+    object.save(function (err, result) {
+        if (err) 
+            res.send({err});
+        else
+            res.json({Message:'PREVIEW DONE'});
+    });
+}
+
+//--- TO GET ALL USERS ---//
+function allusers(body,res){
+    console.log('req-----',body.adminID)
+    
+    admin.findOne({_id:body.adminID},(err,result)=>{
+        console.log('res----',result)
+        if(err)
+            res.json("err")
+        else{
+            if(result==null)
+                res.json({Message:'NOT THE ADMIN'})
+                else{
+                    //res.json({result})
+                    user.find({},(err, data)=>{
+                        if(err)
+                            res.json({err})
+                        else{
+                            
+                            res.json({data})
+                        }
+                    })
+                }
+        }
+    })
+}
+
 module.exports = {
-    Login,Signup
+    Login,Signup,preview,allusers
 }

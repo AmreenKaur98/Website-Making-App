@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
 var user = require('../models/user');
-var web = require('../models/website')
+var web = require('../models/website');
+var pre = require('../models/preview');
 var jwt = require('../auth/userToken');
 
 function Signup(body,res){
@@ -80,8 +81,8 @@ function Website(body,res){
 
 //---- FOR EDIT THE SITE ----//
 function Site(body,res){
-    console.log('email-----',body.email)
-    user.find({email:body.email},(err,data)=>{
+    console.log('body-----',body)
+    user.find({_id:body.userID},(err,data)=>{
         if(err)
             res.json(err)
         else{
@@ -93,9 +94,35 @@ function Site(body,res){
         }
     })
 }
+
+//--- TO GET ALL PREVIEW --//
+function Preview(body,res){
+    user.findOne({_id:body.userID},(err,data)=>{
+        if(err)
+            res.json({err})
+        else{
+            if(data==null)
+                res.json({Message:'Not valid user'})
+            else{
+                pre.find({},(err,result)=>{
+                    if(err)
+                        res.json({err})
+                    else{
+                        if(result==null)
+                            res.json({Message:'No preview'})
+                        else
+                            res.json({result})
+                    }
+                })
+            }
+        }
+    })
+}
+
 module.exports={
     Signup,
     Login,
     Website,
-    Site
+    Site,
+    Preview
 }

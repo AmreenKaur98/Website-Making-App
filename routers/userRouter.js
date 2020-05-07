@@ -46,9 +46,14 @@ router.post('/website',jwt.verifyToken,jwt.verify,upload.single('logo'),(req,res
     } 
 })
 
-router.post('/editSite',jwt.verifyToken,jwt.verify,(req,res)=>{
-    console.log('IN EDIT----',req.body)
-    controller.Site(req.body,res)
+router.put('/editSite',jwt.verifyToken,jwt.verify,(req,res)=>{
+    console.log('In edit')
+    console.log('IN EDIT----',req.params)
+    //controller.Site(req.body,res)
 })
 
+router.get('/getpreview',jwt.verifyToken,jwt.verify,(req,res)=>{
+    //console.log(req.query,'in preview----',req.body);
+    controller.Preview(req.body,res)
+})
 module.exports = router

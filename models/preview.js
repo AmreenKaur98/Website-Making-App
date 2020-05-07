@@ -2,23 +2,22 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var previewSchema = new Schema({
-    webiteType:{
+    previewType:{
         type:String,
         required:true
     },
-    websiteName:{
+    previewName:{
         type:String,
         required:true
     },
     email:{
         type:String,
-        required:true,
-        match:'^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$'
+        required:true
     },
     logo:{
         type:String
     },
-    adminId:{
+    adminID:{
         type:Schema.Types.ObjectId,
         ref:'user',
         required:true
@@ -34,9 +33,6 @@ var previewSchema = new Schema({
     workingHour:{
         type:Number
     },
-    images:[{
-      type:String  
-    }],
     createdAt:{
         type:Date,
         default:Date.now()

@@ -138,26 +138,29 @@
           },
           "/editSite":{
             "put":{
-                "tags":["Users"],
-                "description":"edit the site",
-                "parameters":[
-                    {
-                        "name":"authorization",
-                        "in":"header",
-                        "required":"true"
-                      },
-                      {
-                          "name": "email",
-                          "in": "formData",
-                          "type":"string",
-                          "required":"true"
-                      }
+              "tags": ["Users"],
+                "description": "edit the website.. ",
+                "parameters": [
+                  {
+                    "name":"authorization",
+                    "in":"header",
+                    "required":"true"
+                  },
+                  {
+                    "name":"qser",
+                    "in": "formData",
+                    "type":"string"
+                  }
                 ],
-                "produce":["application/json"],
-                "responses":{
-                  "200":{"description":"result"}
-                }
+                "produces": [
+                  "application/json"
+                ],
+                "responses": {
+                  "200": {
+                    "description": "result"
+                  }
               }
+          }
           },
           "/adminlogin":{
             "post":{
@@ -249,6 +252,12 @@
                     "in": "formData",
                       "type":"number",
                       "required":"true"
+                },
+                {
+                  "name": "adminID",
+                  "in": "formData",
+                    "type":"string",
+                    "required":"true"
                 }
                 ],
                 "produces": [
