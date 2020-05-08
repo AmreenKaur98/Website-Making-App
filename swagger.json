@@ -147,9 +147,10 @@
                     "required":"true"
                   },
                   {
-                    "name":"qser",
-                    "in": "formData",
-                    "type":"string"
+                    "name":"site",
+                    "in":"body",
+                    "description":"options to edit website..",
+                    "schema":{"$ref":"#/definitions/editSite"}
                   }
                 ],
                 "produces": [
@@ -288,6 +289,12 @@
           "properties":{
             "email":{ "type":"string"},
             "password":{ "type":"string"}
+            }
+          },
+          "editSite":{
+          "properties":{
+            "email":{"type":"string"},
+            "workingHour":{ "type":"number"}
             }
           }
     }

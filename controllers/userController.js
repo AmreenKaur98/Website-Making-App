@@ -81,15 +81,15 @@ function Website(body,res){
 
 //---- FOR EDIT THE SITE ----//
 function Site(body,res){
-    console.log('body-----',body)
-    user.find({_id:body.userID},(err,data)=>{
+    //console.log('body-----',body)
+    web.findOneAndUpdate({email:body.email},{$set:{workingHour:body.workingHour}},{new:true},(err,data)=>{
         if(err)
-            res.json(err)
+            res.json({ERRORRRRR:err})
         else{
             if(data==null)
-                res.json({data:'ID NOT EXISTS'})
+                res.json({Message:'Not valid user'})
             else{
-                res.json(data)
+                res.json({data})
             }
         }
     })
